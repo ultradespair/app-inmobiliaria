@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente de Marketing Inmobiliario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Asistente de Marketing Inmobiliario 🏡</h1>
+
+        <div class="card">
+            <h2>Configuración del Contenido</h2>
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="district-select">1. Elige el Distrito:</label>
+                    <select id="district-select">
+                        <option value="jesus-maria">Jesús María</option>
+                        <option value="miraflores">Miraflores</option>
+                        <option value="san-miguel">San Miguel</option>
+                        <option value="san-borja">San Borja</option>
+                        <option value="pueblo-libre">Pueblo Libre</option>
+                        <option value="lince">Lince</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="buyer-profile">2. Perfil del Comprador:</label>
+                    <select id="buyer-profile">
+                        <option value="pareja-joven">Pareja Joven (28+)</option>
+                        <option value="familia">Familia (45-55)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="buyer-income">3. Ingresos (S/):</label>
+                    <input type="text" id="buyer-income" placeholder="Ej: 5000">
+                </div>
+
+                <div class="form-group">
+                    <label for="property-price">4. Precio Inmueble (S/):</label>
+                    <input type="text" id="property-price" placeholder="Ej: 450,000">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>5. Tipo de Contenido:</label>
+                <div class="btn-group">
+                    <button class="btn-content-type active" data-type="descripcion">Descripción Larga</button>
+                    <button class="btn-content-type" data-type="social">Post Redes (3)</button>
+                    <button class="btn-content-type" data-type="video">Guion Video</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="output-format">6. Formato de Salida:</label>
+                <select id="output-format">
+                    <option value="texto">Texto Plano</option>
+                    <option value="html">HTML</option>
+                </select>
+            </div>
+
+            <div class="action-buttons">
+                <button id="generate-btn" class="btn-primary">Generar Contenido</button>
+                <button id="image-idea-btn" class="btn-secondary">Generar Idea de Imagen</button>
+            </div>
+        </div>
+
+        <div class="card output-section">
+            <h2>Resultado Generado</h2>
+            <textarea id="output-area" rows="15" placeholder="Aquí aparecerá el contenido generado..." readonly></textarea>
+            <div class="output-controls">
+                <button id="edit-btn">Editar</button>
+                <button id="save-btn">Guardar en Historial</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Historial de Contenido</h2>
+            <button id="clear-history-btn" class="btn-danger">Limpiar Historial</button>
+            <div id="history-list">
+                <p>No hay contenido guardado.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
