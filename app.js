@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const GROQ_API_URL = "/api/proxyGroq";
 
     // --- BASE DE DATOS DE DISTRITOS ---
-    // Puedes añadir más distritos aquí fácilmente
     const districtData = {
         'jesus-maria': {
             name: 'Jesús María',
@@ -51,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyList = document.getElementById('history-list');
     const clearHistoryBtn = document.getElementById('clear-history-btn');
     const contentTypeButtons = document.querySelectorAll('.btn-content-type');
+    const copyBtn = document.getElementById('copy-btn');
 
     let selectedContentType = 'descripcion';
     let isEditing = false;
@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     editBtn.addEventListener('click', toggleEdit);
     saveBtn.addEventListener('click', saveContent);
     clearHistoryBtn.addEventListener('click', clearHistory);
+    copyBtn.addEventListener('click', copyToClipboard);
 
     loadHistory();
 
@@ -296,4 +297,32 @@ document.addEventListener('DOMContentLoaded', () => {
             loadHistory();
         }
     }
-});
+
+    async function copyToClipboard() {
+    const textToCopy = outputArea.value;
+
+    // Verificar si hay algo que copiar
+    if (!textToCopy || textToCopy === "Generando contenido, por favor espera...") {
+        alert("No hay contenido válido para copiar.");
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(textToCopy);
+
+
+        copyBtn.textContent = '¡Copiado!';
+        copyBtn.classList.add('copied');
+
+        setTimeout(() => {
+            copyBtn.textContent = 'Copiar Texto';
+            copyBtn.classList.remove('copied');
+        }, 2000); 
+
+    } catch (err) {
+        console.error('Error al copiar el texto: ', err);
+        alert('Hubo un error al intentar copiar el texto.');
+    
+    }
+    }
+}   );
